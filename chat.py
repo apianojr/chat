@@ -27,6 +27,14 @@ def salvar_mensagem(usuario, texto, hora):
     conn.commit()
     conn.close()
 
+def apagar_mensagens():
+    conn = sqlite3.connect("chat_publico.db")
+    c = conn.cursor()
+    c.execute("DELETE FROM mensagens WHERE 1=1")
+    conn.commit()
+    conn.close()
+    buscar_mensagens()
+
 def buscar_mensagens():
     conn = sqlite3.connect("chat_publico.db")
     c = conn.cursor()
@@ -48,6 +56,10 @@ if "nome_usuario" not in st.session_state:
             st.rerun()
 else:
     st.sidebar.markdown(f"Usuário: **{st.session_state.nome_usuario}**")
+    if st.session_state.nome_usuario == 'Apiano':
+        if st.sidebar.button("Apagar Mensagens ❌​"):
+            apagar_mensagens()
+        
     if st.sidebar.button("Atualizar Mensagens 🔄"):
         st.rerun()
 
