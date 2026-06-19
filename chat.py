@@ -56,7 +56,7 @@ else:
     for msg in mensagens:
         usuario, texto, hora = msg
         with st.chat_message("user"):
-            st.markdown(f"**{usuario}** <small style='color: gray;'>({hora})</small>", unsafe_allowed_html=True)
+            st.markdown(f"**{usuario}** <small style='color: gray;'>({hora})</small>", unsafe_allow_html=True)
             st.markdown(texto)
 
     # Input de nova mensagem
