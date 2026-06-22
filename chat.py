@@ -45,7 +45,7 @@ def buscar_mensagens():
 
 # Inicializa o banco de dados
 inicializar_db()
-
+@st.fragment(run_every=5)
 # Fluxo de Usuário
 if "nome_usuario" not in st.session_state:
     st.subheader("Escolha seu apelido para entrar:")
